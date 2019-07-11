@@ -35,28 +35,28 @@ room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
 
-# def next_room(current_room, direction):
-#     rooms = {
-#         "outside": {
-#             "n": "foyer"
-#         },
-#         "foyer": {
-#             "n": "overlook",
-#             "s": "outside",
-#             "e": "narrow"
-#         },
-#         "overlook": {
-#             "s": "foyer"
-#         },
-#         "narrow": {
-#             "w": "foyer",
-#             "n": "treasure"
-#         },
-#         "treasure": {
-#             "s": "narrow"
-#         }
-#     }
-#     return rooms[current_room][direction]
+def next_room(current_room, direction):
+    rooms = {
+        "outside": {
+            "n": "foyer"
+        },
+        "foyer": {
+            "n": "overlook",
+            "s": "outside",
+            "e": "narrow"
+        },
+        "overlook": {
+            "s": "foyer"
+        },
+        "narrow": {
+            "w": "foyer",
+            "n": "treasure"
+        },
+        "treasure": {
+            "s": "narrow"
+        }
+    }
+    return rooms[current_room][direction]
 
 
 #

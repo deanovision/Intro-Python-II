@@ -35,28 +35,28 @@ room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
 
-# def next_room(current_room, direction):
-#     rooms = {
-#         "outside": {
-#             "n": "foyer"
-#         },
-#         "foyer": {
-#             "n": "overlook",
-#             "s": "outside",
-#             "e": "narrow"
-#         },
-#         "overlook": {
-#             "s": "foyer"
-#         },
-#         "narrow": {
-#             "w": "foyer",
-#             "n": "treasure"
-#         },
-#         "treasure": {
-#             "s": "narrow"
-#         }
-#     }
-#     return rooms[current_room][direction]
+def next_room(current_room, direction):
+    rooms = {
+        "outside": {
+            "n": "foyer"
+        },
+        "foyer": {
+            "n": "overlook",
+            "s": "outside",
+            "e": "narrow"
+        },
+        "overlook": {
+            "s": "foyer"
+        },
+        "narrow": {
+            "w": "foyer",
+            "n": "treasure"
+        },
+        "treasure": {
+            "s": "narrow"
+        }
+    }
+    return rooms[current_room][direction]
 
 
 #
@@ -90,24 +90,33 @@ while True:
         if room[player_1.current_room].n_to:
             print("you moved to the north")
             player_1.update_room(room[player_1.current_room].n_to.name)
+            # print(player_1.current_room)
+            # player_1.current_room = next_room(
+            #     player_1.current_room, player_cmd)
         else:
             print("you can't move there")
     elif player_cmd == "s":
         if room[player_1.current_room].s_to:
             print("you moved to the south")
             player_1.update_room(room[player_1.current_room].s_to.name)
+            # player_1.current_room = next_room(
+            #     player_1.current_room, player_cmd)
         else:
             print("you can't move there")
     elif player_cmd == "e":
         if room[player_1.current_room].e_to:
             print("you moved to the east")
             player_1.update_room(room[player_1.current_room].e_to.name)
+            # player_1.current_room = next_room(
+            #     player_1.current_room, player_cmd)
         else:
             print("you can't move there")
     elif player_cmd == "w":
         if room[player_1.current_room].w_to:
             print("you moved to the east")
             player_1.update_room(room[player_1.current_room].w_to.name)
+            # player_1.current_room = next_room(
+            #     player_1.current_room, player_cmd)
         else:
             print("you can't move there")
     elif player_cmd == "q":
