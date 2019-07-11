@@ -1,25 +1,26 @@
 from room import Room
 from player import Player
+from item import Item
 
 # Declare all the rooms
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+                     "North of you, the cave mount beckons", [{"name": "sword", "description": "legendary sword of king arthur"}]),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east."""),
+passages run north and east.""", [{"name": "knife", "description": "famous knife of crocodile dundee. thats not a knife, this is a knife!"}]),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
-the distance, but there is no way across the chasm."""),
+the distance, but there is no way across the chasm.""", [{"name": "elixir", "description": "the bottled tears of your enemies"}]),
 
     'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
-to north. The smell of gold permeates the air."""),
+to north. The smell of gold permeates the air.""", [{"name": "spellbook", "description": "legendary book of magic used by Merlin"}]),
 
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
-earlier adventurers. The only exit is to the south."""),
+earlier adventurers. The only exit is to the south.""", [{"name": "key", "description": "mysterious looking key"}]),
 }
 
 
@@ -80,34 +81,34 @@ room['treasure'].s_to = room['narrow']
 # def moves(cmd):
 
 
-player_1 = Player("Rodean", "outside")
+player_1 = Player("Rodean", room["outside"])
 
 while True:
-    print("current location:", player_1.current_room)
-    print(room[player_1.current_room].description)
+    print("current location:", player_1.current_room.name)
+    print(player_1.current_room.description)
     player_cmd = input("Type n,s,e,w to move or q to quit:")
     if player_cmd == "n":
-        if room[player_1.current_room].n_to:
+        if player_1.current_room.n_to:
             print("you moved to the north")
-            player_1.update_room(room[player_1.current_room].n_to.name)
+            player_1.current_room = player_1.current_room.n_to
         else:
             print("you can't move there")
     elif player_cmd == "s":
-        if room[player_1.current_room].s_to:
+        if player_1.current_room.s_to:
             print("you moved to the south")
-            player_1.update_room(room[player_1.current_room].s_to.name)
+            player_1.current_room = player_1.current_room.s_to
         else:
             print("you can't move there")
     elif player_cmd == "e":
-        if room[player_1.current_room].e_to:
+        if player_1.current_room.e_to:
             print("you moved to the east")
-            player_1.update_room(room[player_1.current_room].e_to.name)
+            player_1.current_room = player_1.current_room.e_to
         else:
             print("you can't move there")
     elif player_cmd == "w":
-        if room[player_1.current_room].w_to:
+        if player_1.current_room.w_to:
             print("you moved to the east")
-            player_1.update_room(room[player_1.current_room].w_to.name)
+            player_1.current_room = player_1.current_room.w_to
         else:
             print("you can't move there")
     elif player_cmd == "q":
